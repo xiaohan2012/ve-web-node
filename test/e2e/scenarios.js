@@ -2,29 +2,35 @@
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
 
-describe('my app', function() {
+describe('pairwise comparison', function() {
 
   beforeEach(function() {
     browser().navigateTo('../../app/index.html');
   });
 
 
-  it('should automatically redirect to /view1 when location hash/fragment is empty', function() {
-    expect(browser().location().url()).toBe("/view1");
+  it('should automatically redirect to /pairwise-comparison when location hash/ is empty', function() {
+    expect(browser().location().url()).toBe("/pairwise-comparison");
   });
 
 
-  describe('view1', function() {
+  describe('select pdb and chain', function() {
 
     beforeEach(function() {
-      browser().navigateTo('#/view1');
+	//browser().navigateTo('');
     });
 
 
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element('[ng-view] p:first').text()).
-        toMatch(/partial for view 1/);
+    it('click on the first pdb tab, tab name should change after typing something in the pdb and chain region,', function() {
+	var tab2 = element('a[href="#pdb2"]');
+	tab2.click();
+	input("pdb").enter("1SLG");
+
+	input("chain").enter("A B");
+	
+	expect(tab2.text()).toMatch("1SLG A B");
     });
+
 
   });
 
@@ -32,13 +38,11 @@ describe('my app', function() {
   describe('view2', function() {
 
     beforeEach(function() {
-      browser().navigateTo('#/view2');
+	//browser().navigateTo('#/view2');
     });
 
 
     it('should render view2 when user navigates to /view2', function() {
-      expect(element('[ng-view] p:first').text()).
-        toMatch(/partial for view 2/);
     });
 
   });

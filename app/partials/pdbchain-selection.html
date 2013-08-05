@@ -1,0 +1,61 @@
+<div ng-controller="PDBChainSelectionCtrl" id="pdbchain-selection">
+  <form class="form-horizontal">
+    <div class="control-group select-pdb">
+      <label class="control-label">
+	PDB id
+      </label>
+      <div class="controls">
+	<input id="select-pdb"type="text" placeholder="PDB Id" 
+	       ng-model="pdb"
+	       ng-change="change()">
+	<span class="help-inline hidden"></span>
+      </div>
+      <label class="control-label">
+      </label>
+      <div class="controls" style="margin-top:10px;">
+	<span class="label label-info">Alternative:</span> 
+	<span>
+	  <a class="upload-pdb" href="">Upload</a> your local PDB file.
+	</span>
+      </div>
+    </div>
+
+    <div class="control-group upload-pdb hidden">
+      <label class="control-label">
+
+      </label>
+      <div class="controls">
+	<input id="file-uploader" type="file">
+	<span class="help-inline hidden"></span>
+      </div>
+      <label class="control-label">
+      </label>
+      <div class="controls">
+	<span class="label label-info">Alternative:</span> 
+	<span>
+	  <a class="select-pdb" href="">Select</a> PDB id.
+	</span>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label class="control-label">
+	Chain
+      </label>
+      <div class="controls">
+	<input id="select-chain" type="text" placeholder="Chain id separated by space" 
+	       ng-model="chain"
+	       ng-change="change()">
+	<span class="help-inline hidden"></span>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <button type="reset" class="btn">Reset</button>
+        <button class="btn btn-primary next-pdb">Next</button>
+      </div>
+    </div>
+
+  </form>
+</div>

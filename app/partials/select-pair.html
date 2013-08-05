@@ -1,0 +1,23 @@
+<div  id="pdbchain-selection">
+  <ul class="nav nav-tabs">
+    <li ng-repeat="i in [1,2]"  
+	ng-class="{'active': i == 1}" 
+	ng-controller="PDBChainTitleCtrl" 
+	ng-init="selection_id = i;">
+      <a href="#pdb{{i}}" data-toggle="tab" >
+	{{pdb }}-{{chain}}
+	<i class="icon icon-ok hidden"></i>
+      </a>
+    </li>
+    
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane" id="pdb{{i}}" 
+	 ng-repeat="i in [1,2]"  
+	 ng-class="{'active': i == 1}">
+      <ng-include  onload="selection_id=i;" 
+		   src=" 'partials/pdbchain-selection.html' ">
+      </ng-include> 
+    </div>
+  </div>
+</div>

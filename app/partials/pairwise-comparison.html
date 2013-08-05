@@ -1,0 +1,47 @@
+<div class="tabbable tabs-left">
+  {{
+  $state.current.name
+  }}
+  <ul class="nav nav-tabs span3">
+    <li class="nav-header">Selection</li>
+    <li ng-class="{active : $state.current.name == 'pairwise-comparison.select-pair'}">
+      <a href="#/pairwise-comparison/select-pair">
+	PDB+Chain
+      </a>
+    </li>
+    <li ng-class="{active : $state.current.name == 'pairwise-comparison.select-epitope'}">
+      <a href="#/pairwise-comparison/select-epitope">
+	Epitope
+      </a>
+    </li>
+    <li class="nav-header">Configuration</li>
+    <li>
+      <a href="#cylinder-config">
+	Cylinder
+      </a>
+    </li>
+    <li>
+      <a href="#aaindex-config">
+	AAIndex
+      </a>
+    </li>
+
+  </ul>
+  <div class="tab-content">
+    <div ui-view></div>
+  </div>
+  <!--
+  <div class="tab-content">
+      <ng-include src=" pageUrl ">
+      </ng-include> 
+    </div>
+
+    <div class="tab-pane" id="aaindex-config">
+      <p>Howdy, I'm in Section 2.</p>
+    </div>
+
+  </div>
+  -->
+</div>
+
+
