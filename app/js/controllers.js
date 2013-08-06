@@ -3,38 +3,46 @@
 /* Controllers */
 
 angular.module('veWeb.controllers', ["veWeb.services"])
-    .config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/pairwise-comparison/select-pairs', {templateUrl: 'partials/select-pairs.html', controller: 'PairwiseComparisonCtrl'});
-	$routeProvider.otherwise({redirectTo: '/pairwise-comparison'});
-    }])
     .controller('PairwiseComparisonCtrl', function($scope, $routeParams, $state) {
 	
     })
-    .controller("PDBChainTitleCtrl", function($scope, PDBChainOnChangeService){
-	$scope.pdb = "PDB id";
-	$scope.chain = "";
-	$scope.selection_id = PDBChainOnChangeService.give_receiver_token();
-
-	$scope.$on("pdbchainChange", function(){
-	    if($scope.selection_id == PDBChainOnChangeService.selection_id){
-		console.log($scope.selection_id, " will do it", PDBChainOnChangeService.pdb);
-		$scope.pdb = PDBChainOnChangeService.pdb;
-		$scope.chain = PDBChainOnChangeService.chain;
-	    }
-	})
-    })
-    .controller('PDBChainSelectionCtrl', function($scope, PDBChainOnChangeService) {
-
-	$scope.selection_id = PDBChainOnChangeService.give_sender_token();
-
-	$scope.pdb = "";
-	$scope.chain = "";
-
-	$scope.change = function(){
-	    PDBChainOnChangeService.pdbchainChange($scope.selection_id, $scope.pdb, $scope.chain);
-	}
+    .controller('PairSelectionController', function($scope) {
+	
+	$scope.pair = [
+	    {id: 1, pdb:"PDB1", chain:""},
+	    {id: 2, pdb:"PDB2", chain: ""}
+	]
 
     })
     .controller('EpitopeSelectionCtrl', function($scope) {
-	$scope.pageUrl = "partials/interactive3D-epitope-selection.html";
+	
+    })
+    .controller('EpitopeSelection.Interactive3DCtrl', function($scope, $http, $timeout) {
+	
+	$scope.vis = new GLmol("mol", true);
+	
+	$scope.vis.defineRepresentation = function() {
+	    var all = this.getAllAtoms();
+	    var hetatm = this.removeSolvents(this.getHetatms(all));
+	    this.colorByAtom(all, {});
+	    this.colorByChain(all);
+	    var asu = new THREE.Object3D();
+	    
+	    this.drawBondsAsStick(asu, hetatm, this.cylinderRadius, this.cylinderRadius);
+	    this.drawBondsAsStick(asu, this.getResiduesById(this.getSidechains(this.getChain(all, ['A'])), [58, 87]), this.cylinderRadius, this.cylinderRadius);
+	    this.drawBondsAsStick(asu, this.getResiduesById(this.getSidechains(this.getChain(all, ['B'])), [63, 92]), this.cylinderRadius, this.cylinderRadius);
+	    this.drawCartoon(asu, all, this.curveWidth, this.thickness);
+
+	    this.drawSymmetryMates2(this.modelGroup, asu, this.protein.biomtMatrices);
+	    this.modelGroup.add(asu);
+	};
+	
+	$http({method: "GET", url:"pdbs/2DHB.pdb"}).success(function(data){
+	    $scope.pdbSrc = data;
+	    //wierd part!
+	    $timeout(function(){
+		$scope.$broadcast('pdbSrcLoaded');
+	    },1);
+	})
     });
+

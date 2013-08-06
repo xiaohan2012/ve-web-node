@@ -1,4 +1,4 @@
-<div ng-controller="PDBChainSelectionCtrl" id="pdbchain-selection">
+<div id="pdbchain-selection">
   <form class="form-horizontal">
     <div class="control-group select-pdb">
       <label class="control-label">
@@ -6,8 +6,7 @@
       </label>
       <div class="controls">
 	<input id="select-pdb"type="text" placeholder="PDB Id" 
-	       ng-model="pdb"
-	       ng-change="change()">
+	       ng-model="o.pdb">
 	<span class="help-inline hidden"></span>
       </div>
       <label class="control-label">
@@ -44,8 +43,7 @@
       </label>
       <div class="controls">
 	<input id="select-chain" type="text" placeholder="Chain id separated by space" 
-	       ng-model="chain"
-	       ng-change="change()">
+	       ng-model="o.chain">
 	<span class="help-inline hidden"></span>
       </div>
     </div>

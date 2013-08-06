@@ -5,7 +5,7 @@
 describe('pairwise comparison', function() {
 
   beforeEach(function() {
-    browser().navigateTo('../../app/index.html');
+    browser().navigateTo('../../app/index.html#/pairwise-comparison');
   });
 
 
@@ -17,18 +17,18 @@ describe('pairwise comparison', function() {
   describe('select pdb and chain', function() {
 
     beforeEach(function() {
-	//browser().navigateTo('');
+	browser().navigateTo('../../app/index.html#/pairwise-comparison/select-pair');
     });
 
 
     it('click on the first pdb tab, tab name should change after typing something in the pdb and chain region,', function() {
 	var tab2 = element('a[href="#pdb2"]');
 	tab2.click();
-	input("pdb").enter("1SLG");
+	input("o.pdb").enter("1SLG");
 
-	input("chain").enter("A B");
+	input("o.chain").enter("A B");
 	
-	expect(tab2.text()).toMatch("1SLG A B");
+	expect(tab2.text()).toContain("1SLG-A B");
     });
 
 
