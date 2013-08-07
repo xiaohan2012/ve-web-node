@@ -12,13 +12,18 @@
       </a>
     </li>
     <li class="nav-header">Configuration</li>
-    <li>
-      <a href="#cylinder-config">
+    <li ng-class="{active : $state.current.name == 'pairwise-comparison.cylinder-config'}">
+      <a href="#/pairwise-comparison/cylinder-config">
 	Cylinder
       </a>
     </li>
-    <li>
-      <a href="#aaindex-config">
+    <li ng-class="{active : $state.current.name == 'pairwise-comparison.sphere-config'}">
+      <a href="#/pairwise-comparison/sphere-config">
+	Sphere
+      </a>
+    </li>
+    <li ng-class="{active : $state.current.name == 'pairwise-comparison.aaindex-config'}">
+      <a href="#/pairwise-comparison/aaindex-config">
 	AAIndex
       </a>
     </li>
@@ -27,18 +32,6 @@
   <div class="tab-content">
     <div ui-view></div>
   </div>
-  <!--
-  <div class="tab-content">
-      <ng-include src=" pageUrl ">
-      </ng-include> 
-    </div>
-
-    <div class="tab-pane" id="aaindex-config">
-      <p>Howdy, I'm in Section 2.</p>
-    </div>
-
-  </div>
-  -->
 </div>
 
 

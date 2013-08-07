@@ -22,7 +22,6 @@ angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 
 	  .state("pairwise-comparison.select-pair",{
 	      url: "/select-pair",
 	      templateUrl: "partials/select-pair.html",
-	      //controller: PairSelectionController
 	  })
 	  .state("pairwise-comparison.select-epitope",{
 	      url: "/select-epitope",
@@ -35,6 +34,10 @@ angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 
 	  .state("pairwise-comparison.select-epitope.seppa",{
 	      url: "/seppa",
 	      templateUrl: "partials/select-epitope.seppa.html"
+	  })
+      	  .state("pairwise-comparison.cylinder-config",{
+	      url: "/cylinder-config",
+	      templateUrl: "partials/cylinder-config.html",
 	  })
 
   });
