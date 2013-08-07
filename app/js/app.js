@@ -26,6 +26,11 @@ angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 
 	      url: "/interactive3D",
 	      templateUrl: "partials/select-epitope.interactive3D.html"
 	  })
+	  .state("pairwise-comparison.select-epitope.seppa",{
+	      url: "/seppa",
+	      templateUrl: "partials/select-epitope.seppa.html"
+	  })
+
 
       /*
       $routeProvider.when('/pairwise-comparison', {templateUrl: 'partials/pairwise-comparison.html', controller: 'PairwiseComparisonCtrl'});

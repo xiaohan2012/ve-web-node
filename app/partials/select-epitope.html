@@ -1,10 +1,13 @@
-<div class="tab-pane" id="epitope-selection" ng-controlle="EpitopeSelectionCtrl">
+<div id="epitope-selection" class="tab-pane" ng-controller="EpitopeSelectionCtrl">
   <ul class="nav nav-pills">
-    <li class="active">
-      <a href="#/pairwise-comparison/select-epitope/interactive3D"> Interactive 3D </a>
-    </li>
-    <li><a href="#/pairwise-comparison/select-epitope/seppa">Seppa</a></li>
-    <li><a href="#">Ignore</a></li>
+    <li ng-repeat="opt in options"
+	ng-class="{active : $state.current.name == 'pairwise-comparison.select-epitope.' + opt.name}"
+	data-original-title="{{opt.tooltipMsg}}" 
+	data-placement="bottom"
+	ui-jq="tooltip">
+      <a href="{{ '#/pairwise-comparison/select-epitope/:name' | format : opt}}"> {{opt.name | inflector: humanize}} </a>
+    </li>    
   </ul>
+  
   <div ui-view></div> 
 </div>

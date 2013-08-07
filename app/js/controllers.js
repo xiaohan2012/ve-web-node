@@ -14,13 +14,19 @@ angular.module('veWeb.controllers', ["veWeb.services"])
 	]
 
     })
-    .controller('EpitopeSelectionCtrl', function($scope) {
+    .controller('EpitopeSelectionCtrl', function($scope, $state) {
+	$scope.options = [
+	    {name: "interactive3D", tooltipMsg:"Using hand selection in interactive 3D environment"},
+	    {name: "seppa", tooltipMsg:"Using Seppa Epitope prediction method"},
+	    {name: "ignore", tooltipMsg: "Ignore this step, meaning we use the whole structure as the epitope"}
+	];
 	
     })
     .controller('EpitopeSelection.Interactive3DCtrl', function($scope, $http, $timeout) {
 	
 	$scope.vis = new GLmol("mol", true);
 	
+	/*
 	$scope.vis.defineRepresentation = function() {
 	    var all = this.getAllAtoms();
 	    var hetatm = this.removeSolvents(this.getHetatms(all));
@@ -36,7 +42,8 @@ angular.module('veWeb.controllers', ["veWeb.services"])
 	    this.drawSymmetryMates2(this.modelGroup, asu, this.protein.biomtMatrices);
 	    this.modelGroup.add(asu);
 	};
-	
+	*/
+
 	$http({method: "GET", url:"pdbs/2DHB.pdb"}).success(function(data){
 	    $scope.pdbSrc = data;
 	    //wierd part!
