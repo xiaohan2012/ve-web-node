@@ -12,7 +12,7 @@ describe('url routing', function(){
 	    expect(browser().location().url()).toBe("/pairwise-comparison/select-pair");
 	})
 
-	it('navigate the select-epitope page, should redirect to the interactive 3D page', function(){
+	it('type in the select-epitope page, should redirect to the interactive 3D page', function(){
 	    browser().navigateTo('../../app/index.html#/pairwise-comparison/select-epitope');
 	    expect(browser().location().url()).toBe("/pairwise-comparison/select-epitope/interactive3D");
 	})

@@ -37,11 +37,5 @@ angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 
 	      templateUrl: "partials/select-epitope.seppa.html"
 	  })
 
-
-      /*
-      $routeProvider.when('/pairwise-comparison', {templateUrl: 'partials/pairwise-comparison.html', controller: 'PairwiseComparisonCtrl'});
-      $routeProvider.when('/view2', {templateUrl: 'partials/partial2.html', controller: 'MyCtrl2'});
-      $routeProvider.otherwise({redirectTo: '/pairwise-comparison'});
-      */
   });
 
