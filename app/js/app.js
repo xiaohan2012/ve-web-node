@@ -4,7 +4,13 @@
 // Declare app level module which depends on filters, and services
 angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 'veWeb.controllers',
 			 'ui.state', 'ui.utils']).
-  config(function($stateProvider) {
+  config(function($urlRouterProvider, $stateProvider) {
+
+      $urlRouterProvider
+	  .when('', '/pairwise-comparison/select-pair')
+	  .when('/pairwise-comparison', '/pairwise-comparison/select-pair')
+	  .when('/pairwise-comparison/select-epitope', '/pairwise-comparison/select-epitope/interactive3D');
+
       $stateProvider
 	  .state("pairwise-comparison",{
 	      url: "/pairwise-comparison",

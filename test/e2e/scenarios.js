@@ -2,15 +2,28 @@
 
 /* http://docs.angularjs.org/guide/dev_guide.e2e-testing */
 
+describe('url routing', function(){
+    beforeEach(function() {
+      browser().navigateTo('../../app/index.html');
+    });
+
+    describe('pairwise comparison url routing', function(){
+	it('type in index.html page, redirect to the pairwise-comparison page\'s select-pair page', function(){
+	    expect(browser().location().url()).toBe("/pairwise-comparison/select-pair");
+	})
+
+	it('navigate the select-epitope page, should redirect to the interactive 3D page', function(){
+	    browser().navigateTo('../../app/index.html#/pairwise-comparison/select-epitope');
+	    expect(browser().location().url()).toBe("/pairwise-comparison/select-epitope/interactive3D");
+	})
+    })
+
+});
+
 describe('pairwise comparison', function() {
 
   beforeEach(function() {
-    browser().navigateTo('../../app/index.html#/pairwise-comparison');
-  });
-
-
-  it('should automatically redirect to /pairwise-comparison when location hash/ is empty', function() {
-    expect(browser().location().url()).toBe("/pairwise-comparison");
+    browser().navigateTo('../../app/index.html');
   });
 
 
