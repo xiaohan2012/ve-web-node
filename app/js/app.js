@@ -39,6 +39,10 @@ angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 
 	      url: "/cylinder-config",
 	      templateUrl: "partials/cylinder-config.html",
 	  })
+      	  .state("pairwise-comparison.sphere-config",{
+	      url: "/sphere-config",
+	      templateUrl: "partials/sphere-config.html",
+	  })
 
   });
 

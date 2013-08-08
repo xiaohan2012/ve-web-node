@@ -90,3 +90,27 @@ angular.module('veWeb.directives', []).
 	    }
 	}
     })
+    .directive("sphereConfig", function(){
+	return {
+	    restrict: "E",
+	    replace: true,
+	    transclude: false,
+	    templateUrl: "partials/sphere-config.widget.html",
+	    controller: function($scope){
+		$scope.init = function(){
+		    $scope.fieldsSetting = {
+			radius : { min: 0, max: 50, step: 5},
+			radiusStep: {min: 1, max:10, step: 2},
+		    };
+		    $scope.radius = 10;
+		    $scope.radiusStep = 1;
+		}		
+		$scope.init();		
+	    },
+	    compile: function (element, attrs) {
+		return function (scope, element, attrs, controller) {
+		    
+		}
+	    }
+	}
+    })

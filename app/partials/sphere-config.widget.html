@@ -1,0 +1,35 @@
+<form class="form-horizontal">
+
+  <div class="control-group">
+    <label class="control-label">Radius</label>
+    <div class="controls">
+      <jq-slider ng-model="radius" 
+		 min-val="fieldsSetting.radius.min" 
+		 max-val="fieldsSetting.radius.max" 
+		 step="fieldsSetting.radius.step"
+		 default-val="radius">
+      </jq-slider>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Radius Step</label>
+    <div class="controls">
+      <jq-slider ng-model="radiusStep" 
+		 min-val="fieldsSetting.radiusStep.min" 
+		 max-val="fieldsSetting.radiusStep.max" 
+		 step="fieldsSetting.radiusStep.step"
+		 default-val="radiusStep">
+      </jq-slider>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label"></label>
+    <div class="controls span3 offset1">
+      <button class="btn" ng-click="init()">Reset</button>
+      <button class="btn btn-primary">Done</button>
+    </div>
+  </div>
+
+</form>
