@@ -18,27 +18,25 @@ angular.module('veWeb.directives', []).
     })
     .directive("jqSlider", function($parse){
 	return {
-	    restrict: "E",
+	    restrict: "EA",
 	    replace: true,
-	    transclude: false,
-	    controller: function($scope){
-		
-	    },
+	    transclude: false,	   	    
 	    compile: function (element, attrs) {
-		var modelAccessor = $parse(attrs.ngModel),
-		minVal = attrs.minVal ? parseFloat(attrs.minVal) : 0, 
-		maxVal = attrs.maxVal ? parseFloat(attrs.maxVal) : 10,
-		step = attrs.step ? parseFloat(attrs.step) : 0.1,
-		defaultVal = attrs.defaultVal ? parseFloat(attrs.defaultVal) : 4;
 		
-		var html = "<div class='row'>" +
-		    "<div class='span3 slider' ></div><span class='help-inline'>{{" + attrs.ngModel + "}}</span>"
+		var html = "<div class='row' style='margin-top:10px;'>" +
+		    "<div class='span3 slider' ></div><span class='help-inline'>{{" + attrs.ngModel + "}} </span>"
 		    +"</div>";
 		
 		var newElem = $(html);
 		element.replaceWith(newElem);
 
 		return function (scope, element, attrs, controller) {
+		    var modelAccessor = $parse(attrs.ngModel),
+		    minVal = attrs.minVal ? scope.$eval(attrs.minVal) : 0, 
+		    maxVal = attrs.maxVal ? scope.$eval(attrs.maxVal) : 10,
+		    step = attrs.step ? scope.$eval(attrs.step) : 0.1,
+		    defaultVal = attrs.defaultVal ? scope.$eval(attrs.defaultVal) : 4;
+		    
 		    element = element.find(".slider");
 
 		    element.slider({
@@ -53,8 +51,7 @@ angular.module('veWeb.directives', []).
 			    }
 			}
 		    });
-
-		    modelAccessor.assign(scope, defaultVal)
+		    modelAccessor.assign(scope, defaultVal);
 		    
 		    scope.$watch(modelAccessor, function (val) {
 			element.slider({"value": val});
@@ -68,7 +65,24 @@ angular.module('veWeb.directives', []).
 	    restrict: "E",
 	    replace: true,
 	    transclude: false,
-	    templateUrl: "partials/cylinder-config-widget.html",
+	    templateUrl: "partials/cylinder-config.widget.html",
+	    controller: function($scope){
+		$scope.init = function(){
+		    $scope.fieldsSetting = {
+			radius : { min: 0, max: 50, step: 5},
+			radiusStep: {min: 1, max:10, step: 2},
+			height: {min: 0, max: 100, step: 5},
+			heightStep: { min: 0, max: 10, step: 2}
+		    };
+		    $scope.radius = 10;
+		    $scope.radiusStep = 1;
+		    $scope.height = 40;
+		    $scope.heightStep = 5;
+		}
+		
+		$scope.init();
+		
+	    },
 	    compile: function (element, attrs) {
 		return function (scope, element, attrs, controller) {
 		    
