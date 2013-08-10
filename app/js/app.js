@@ -3,7 +3,7 @@
 
 // Declare app level module which depends on filters, and services
 angular.module('veWeb', ['veWeb.filters', 'veWeb.services', 'veWeb.directives', 'veWeb.controllers',
-			 'ui.state', 'ui.utils']).
+			 'ui.state', 'ui.utils', 'ui.select2']).
   config(function($urlRouterProvider, $stateProvider) {
 
       $urlRouterProvider

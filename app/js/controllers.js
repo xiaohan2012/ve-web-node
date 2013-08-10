@@ -6,12 +6,16 @@ angular.module('veWeb.controllers', ["veWeb.services"])
     .controller('PairwiseComparisonCtrl', function($scope, $routeParams, $state) {
 	
     })
-    .controller('PairSelectionController', function($scope) {
+    .controller('PairSelectionController', function($scope, $http) {
 	
 	$scope.pair = [
-	    {id: 1, pdb:"PDB1", chain:""},
-	    {id: 2, pdb:"PDB2", chain: ""}
+	    {id: 1, pdb:"", chain:""},
+	    {id: 2, pdb:"", chain: ""}
 	]
+	
+	$http.get('pdbs/allIds.json').success(function(data) {
+	    $scope.ids = data;
+	});
 
     })
     .controller('EpitopeSelectionCtrl', function($scope, $state) {

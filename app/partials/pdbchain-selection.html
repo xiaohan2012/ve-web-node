@@ -5,9 +5,10 @@
 	PDB id
       </label>
       <div class="controls">
-	<input id="select-pdb"type="text" placeholder="PDB Id" 
-	       ng-model="o.pdb">
-	<span class="help-inline hidden"></span>
+	<select ui-select2 ng-model="o.pdb" data-placeholder="PDB Id" style="width:300px;">
+	  <option value=""></option>
+	  <option ng-repeat="id in ids | limitTo : 100" value="{{ id }}"> {{ id }} </option>
+	</select>		
       </div>
       <label class="control-label">
       </label>
