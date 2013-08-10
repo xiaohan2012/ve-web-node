@@ -12,3 +12,8 @@ angular.module('veWeb.services', ['ngResource'])
 	    query: {method: "GET", isArray: true}
 	})
     })
+    .factory("pairwiseComparisonService", function(){
+	return {
+	    pair: [{id: 1, pdb: "", chain: ""}, {id: 2, pdb: "", chain: ""}]
+	}
+    })

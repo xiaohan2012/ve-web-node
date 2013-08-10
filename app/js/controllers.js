@@ -6,12 +6,9 @@ angular.module('veWeb.controllers', ["veWeb.services"])
     .controller('PairwiseComparisonCtrl', function($scope, $routeParams, $state) {
 	
     })
-    .controller('PairSelectionController', function($scope, $http) {
+    .controller('PairSelectionController', function($scope, $http, pairwiseComparisonService) {
 	
-	$scope.pair = [
-	    {id: 1, pdb:"", chain:""},
-	    {id: 2, pdb:"", chain: ""}
-	]
+	$scope.pair = pairwiseComparisonService.pair;
 	
 	$http.get('pdbs/allIds.json').success(function(data) {
 	    $scope.ids = data;
@@ -26,17 +23,27 @@ angular.module('veWeb.controllers', ["veWeb.services"])
 	];
 	
     })
-    .controller('EpitopeSelection.Interactive3DCtrl', function($scope, $http, $timeout) {
+    .controller('EpitopeSelection.Interactive3DCtrl', function($scope, $http, $timeout, pairwiseComparisonService) {
 	
 	$scope.vis = new GLmol("mol", true);
 	
-	$http({method: "GET", url:"pdbs/2DHB.pdb"}).success(function(data){
+	$http.jsonp("http://www.rcsb.org/pdb/download/downloadFile.do?fileFormat=pdb&compression=NO&structureId=" + pairwiseComparisonService.pair[0].pdb).success(function(data){
 	    $scope.pdbSrc = data;
 	    //wierd part!
 	    $timeout(function(){
 		$scope.$broadcast('pdbSrcLoaded');
 	    },1);
 	})
+	/*
+	$http({method: "GET", 
+	       url:"http://www.rcsb.org/pdb/download/downloadFile.do?fileFormat=pdb&compression=NO&structureId=" + pairwiseComparisonService.pair[0].pdb + ".pdb"}).success(function(data){
+	    $scope.pdbSrc = data;
+	    //wierd part!
+	    $timeout(function(){
+		$scope.$broadcast('pdbSrcLoaded');
+	    },1);
+	})
+	*/
     })
     .controller('EpitopeSelection.SeppaCtrl', function($scope){
 	
