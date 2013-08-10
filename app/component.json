@@ -1,0 +1,11 @@
+{
+  "name": "ve-web-node",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular-ui-select2": "latest",
+    "angular-ui-utils": "~0.0.4",
+    "angular-ui-router": "~0.0.1",
+    "angular-resource": "~1.0.7",
+    "angular-ui": "~0.4.0"
+  }
+}
