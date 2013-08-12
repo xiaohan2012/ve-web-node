@@ -66,27 +66,28 @@ angular.module('veWeb.directives', []).
 	    replace: true,
 	    transclude: false,
 	    templateUrl: "partials/cylinder-config.widget.html",
-	    controller: function($scope){
+	    controller: function($scope, pairwiseComparisonService){
 		$scope.init = function(){
+		    $scope.cfg = {
+			radius: 10,
+			radiusStep: 1,
+			height: 40,
+			heightStep: 5
+		    };
+		    
+		    //bind the cylinder config to service 
+		    pairwiseComparisonService.cylinder = $scope.cfg;
+		    
 		    $scope.fieldsSetting = {
 			radius : { min: 0, max: 50, step: 5},
 			radiusStep: {min: 1, max:10, step: 2},
 			height: {min: 0, max: 100, step: 5},
 			heightStep: { min: 0, max: 10, step: 2}
 		    };
-		    $scope.radius = 10;
-		    $scope.radiusStep = 1;
-		    $scope.height = 40;
-		    $scope.heightStep = 5;
 		}
 		
 		$scope.init();
 		
-	    },
-	    compile: function (element, attrs) {
-		return function (scope, element, attrs, controller) {
-		    
-		}
 	    }
 	}
     })
@@ -96,21 +97,21 @@ angular.module('veWeb.directives', []).
 	    replace: true,
 	    transclude: false,
 	    templateUrl: "partials/sphere-config.widget.html",
-	    controller: function($scope){
+	    controller: function($scope, pairwiseComparisonService){
 		$scope.init = function(){
+		    $scope.cfg = {
+			radius: 10,
+			radiusStep: 1
+		    };
+		    
+		    pairwiseComparisonService.sphere = $scope.cfg;
+		    
 		    $scope.fieldsSetting = {
 			radius : { min: 0, max: 50, step: 5},
 			radiusStep: {min: 1, max:10, step: 2},
 		    };
-		    $scope.radius = 10;
-		    $scope.radiusStep = 1;
 		}		
 		$scope.init();		
-	    },
-	    compile: function (element, attrs) {
-		return function (scope, element, attrs, controller) {
-		    
-		}
 	    }
 	}
     })

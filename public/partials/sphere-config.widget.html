@@ -3,11 +3,11 @@
   <div class="control-group">
     <label class="control-label">Radius</label>
     <div class="controls">
-      <jq-slider ng-model="radius" 
+      <jq-slider ng-model="cfg.radius" 
 		 min-val="fieldsSetting.radius.min" 
 		 max-val="fieldsSetting.radius.max" 
 		 step="fieldsSetting.radius.step"
-		 default-val="radius">
+		 default-val="cfg.radius">
       </jq-slider>
     </div>
   </div>
@@ -15,11 +15,11 @@
   <div class="control-group">
     <label class="control-label">Radius Step</label>
     <div class="controls">
-      <jq-slider ng-model="radiusStep" 
+      <jq-slider ng-model="cfg.radiusStep" 
 		 min-val="fieldsSetting.radiusStep.min" 
 		 max-val="fieldsSetting.radiusStep.max" 
 		 step="fieldsSetting.radiusStep.step"
-		 default-val="radiusStep">
+		 default-val="cfg.radiusStep">
       </jq-slider>
     </div>
   </div>

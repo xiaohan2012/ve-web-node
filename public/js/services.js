@@ -14,6 +14,10 @@ angular.module('veWeb.services', ['ngResource'])
     })
     .factory("pairwiseComparisonService", function(){
 	return {
-	    pair: [{id: 1, pdb: "102L", chain: ""}, {id: 2, pdb: "126D", chain: ""}]
+	    pair: [{id: 1, pdb: "102L", chain: ""}, {id: 2, pdb: "126D", chain: ""}],
+	    epitope: {},
+	    cylinder: {},
+	    sphere: {},
+	    aaindex: {}
 	}
     })
