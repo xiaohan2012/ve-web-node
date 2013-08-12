@@ -1,0 +1,21 @@
+
+<div ng-controller="EpitopeSelection.Interactive3DCtrl">
+  <div class="page-header">
+    <h2>Interactive 3D Epitope Selection</h2>  
+  </div>
+  <form>
+
+    <label class="radio inline" >
+      <input type="radio" ng-model="currentPdb" name="pdbId" value="{{pair[0].pdb}}" />  {{pair[0].pdb}}
+    </label>
+    <label class="radio inline" >
+      <input type="radio" ng-model="currentPdb" name="pdbId" value="{{pair[1].pdb}}" />  {{pair[1].pdb}} 
+    </label>
+
+    <div id="mol" style="margin-top: 20px; width: 500px; height: 400px; background-color: gray;"></div> 
+    <textarea id="mol_src" style="display: none;" ng-model="pdbSrc" pdb-viewer>
+      {{pdbSrc}}
+    </textarea>
+  </form>
+</div>
+
