@@ -24,7 +24,8 @@ app.use(app.router);
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+    app.use(express.errorHandler());
+    app.locals.pretty = true;
 }
 
 app.get('/pdb/list', api.pdb.list);
