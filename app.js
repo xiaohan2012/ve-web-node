@@ -10,7 +10,8 @@ var express = require('express')
   , api = require('./routes/api');
 
 
-mongoose.connect('mongodb://localhost/ve-web');
+mongoose.connect('mongodb://ve-web-xiaohan:Xh24206688@ds039768.mongolab.com:39768/ve-web-node');
+// mongodb://localhost/ve-web
 
 var app = express();
 
